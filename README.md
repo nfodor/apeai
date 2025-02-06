@@ -2,7 +2,7 @@
 
 ## Overview
 
-Welcome to the future of API development! The Express.js API Generator is the only API you'll ever need. Imagine an API so powerful that it takes a simple description of what you need and instantly spins up a fully functional server, ready to serve your requests. No more tedious setup or configuration—just describe your API, and let our generator handle the rest.
+Welcome to the future of API development! The Express.js API Generator is the only API you'll ever need. Imagine an API so powerful that it takes a simple description of what you need and instantly spins up a fully functional server, ready to serve your requests. **No more tedious setup or configuration—no coding required!** Just describe your API, and let our generator handle the rest.
 
 ## Quick Start Example
 
