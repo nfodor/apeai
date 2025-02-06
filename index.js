@@ -3,6 +3,8 @@
  * Copyright (c) 2023 Nicolas Fodor
  */
 
+require('dotenv').config();
+
 const express = require('express');
 const axios = require('axios');
 const fs = require('fs');
@@ -36,6 +38,7 @@ if (!fs.existsSync(PROCESS_DIR)) {
 
 // Get the model name from an environment variable or use a default
 const MODEL_NAME = process.env.MODEL_NAME || "Qwen2.5-Coder:1.5B";
+const SERVER_PORT = process.env.SERVER_PORT || 5656;
 
 // Function to check if Ollama is running by making an HTTP request
 async function isOllamaRunning() {
@@ -250,7 +253,7 @@ checkOllamaAndModel().then(() => {
         res.json(runningProcesses);
     });
 
-    app.listen(5656, () => {
-        console.log('Server is running on port 5656');
+    app.listen(SERVER_PORT, () => {
+        console.log(`Server is running on port ${SERVER_PORT}`);
     });
 });

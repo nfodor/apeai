@@ -57,6 +57,30 @@ Express.js is a minimal and flexible Node.js web application framework that prov
 3. **Set Environment Variables** (Optional):
    - `MODEL_NAME`: Specify the model name for the Ollama engine. Defaults to `Qwen2.5-Coder:1.5B`.
 
+## Setup Environment Variables
+
+1. **Copy the Sample `.env` File**:
+   Copy the `env.sample` file to `.env` in the root directory of your project. This file will be used to configure environment-specific settings.
+
+   ```bash
+   cp env.sample .env
+   ```
+
+2. **Edit the `.env` File**:
+   Open the `.env` file and adjust the values as needed for your environment. The default values are already set, so you can leave them as is if they suit your needs.
+
+   ```plaintext
+   MODEL_NAME=Qwen2.5-Coder:1.5B
+   SERVER_PORT=5656
+   ```
+
+3. **Run the Application**:
+   Start the application as usual. The environment variables will be loaded automatically.
+
+   ```bash
+   node index.js
+   ```
+
 ## Usage
 
 ### Starting the Application
