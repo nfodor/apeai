@@ -1,0 +1,22 @@
+{
+  "name": "express-api-generator",
+  "version": "1.0.0",
+  "description": "A powerful API generator that creates Express.js servers based on natural language descriptions.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "bash test.sh"
+  },
+  "author": "Nicolas Fodor",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "cors": "^2.8.5",
+    "body-parser": "^1.19.0",
+    "axios": "^0.21.1",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+} 

@@ -84,7 +84,7 @@ function logAndKillProcessesFromDirectory() {
             console.log(`Killed process with PID: ${pid}`);
             fs.unlinkSync(filePath); // Remove the file after killing the process
         } catch (error) {
-            console.error(`Failed to kill process with PID: ${pid}`, error);
+            console.error(`Failed to kill process with PID: ${pid}`, error.message);
         }
     });
 }
