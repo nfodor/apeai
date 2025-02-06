@@ -4,6 +4,20 @@
 
 Welcome to the future of API development! The Express.js API Generator is the only API you'll ever need. Imagine an API so powerful that it takes a simple description of what you need and instantly spins up a fully functional server, ready to serve your requests. No more tedious setup or configuration—just describe your API, and let our generator handle the rest.
 
+## Quick Start Example
+
+To create a new API server, simply use a `curl` command with a natural language description of the API you want:
+
+```bash
+curl -X POST http://localhost:5656/generate-server-files \
+     -H "Content-Type: application/json" \
+     -d '{
+           "codeDescription": "Create a simple Express.js API with a GET endpoint that returns a welcome message"
+         }'
+```
+
+This command sends a request to the API generator, which will interpret your description and create a new server instance based on your specifications.
+
 ## Why Express.js?
 
 Express.js is a minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile applications. It is the de facto standard server framework for Node.js, known for its simplicity, speed, and scalability. By using Express.js, this API generator leverages:
