@@ -40,6 +40,9 @@ if (!fs.existsSync(PROCESS_DIR)) {
 const MODEL_NAME = process.env.MODEL_NAME || "Qwen2.5-Coder:1.5B";
 const SERVER_PORT = process.env.SERVER_PORT || 5656;
 
+// Define the predefined prompt
+const PREDEFINED_PROMPT = "Ensure the API is secure, follows RESTful principles, and includes error handling. ";
+
 // Function to check if Ollama is running by making an HTTP request
 async function isOllamaRunning() {
     try {
@@ -108,11 +111,14 @@ checkOllamaAndModel().then(() => {
             }
 
             // Extract the code description from the request body
-            const codeDescription = req.body.codeDescription;
+            const userPrompt = req.body.codeDescription;
 
-            // Call the local Ollama engine with the code description as the payload
+            // Combine the predefined prompt with the user's prompt
+            const combinedPrompt = PREDEFINED_PROMPT + userPrompt;
+
+            // Call the local Ollama engine with the combined prompt
             const response = await axios.post('http://localhost:11434/api/generate', {
-                prompt: codeDescription,
+                prompt: combinedPrompt,
                 model: MODEL_NAME
             }, {
                 headers: {
