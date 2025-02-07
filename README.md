@@ -136,6 +136,26 @@ curl -X POST http://localhost:5656/kill-server \
          }'
 ```
 
+## Testing the API
+
+To test the API, you can use the following command:
+
+```bash
+npm test
+```
+
+This command runs the `test.js` script, which sends a request to generate a server and tests its functionality.
+
+## Killing Processes
+
+To kill all running server processes, use the following command:
+
+```bash
+npm run kill
+```
+
+This command runs the `test.js` script with the `kill` argument, which terminates all processes referenced in the process files.
+
 ## Troubleshooting
 
 - **Ollama Not Running**: Ensure that the Ollama engine is installed and accessible. The application will attempt to start it if it's not running.

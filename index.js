@@ -161,11 +161,37 @@ checkOllamaAndModel().then(() => {
                         return res.status(500).send('Failed to write server.js');
                     }
 
-                    // Initialize npm in the temporary directory
-                    execSync('npm init -y', { cwd: tempDir });
+                    // Function to extract dependencies from the server file
+                    function extractDependencies(serverFiles) {
+                        const requireRegex = /require\(['"]([^'"]+)['"]\)/g;
+                        const dependencies = {};
+                        let match;
+                        while ((match = requireRegex.exec(serverFiles)) !== null) {
+                            const packageName = match[1];
+                            dependencies[packageName] = "latest"; // Use "latest" to get the most recent version
+                        }
+                        return dependencies;
+                    }
+
+                    // Extract dependencies from the server.js file
+                    const dependencies = extractDependencies(serverFiles);
+
+                    // Create a package.json file with the necessary dependencies
+                    const packageJson = {
+                        name: "generated-server",
+                        version: "1.0.0",
+                        main: "server.js",
+                        dependencies: {
+                            express: "^4.17.1",
+                            cors: "^2.8.5",
+                            "body-parser": "^1.19.0",
+                            ...dependencies // Add extracted dependencies
+                        }
+                    };
+                    fs.writeFileSync(path.join(tempDir, 'package.json'), JSON.stringify(packageJson, null, 2));
 
                     // Install necessary packages
-                    execSync('npm install express cors body-parser', { cwd: tempDir });
+                    execSync('npm install', { cwd: tempDir });
 
                     // Function to attempt running the server
                     const tryRunServer = (port) => {
@@ -208,14 +234,15 @@ checkOllamaAndModel().then(() => {
                             const processFilePath = path.join(PROCESS_DIR, `${processUUID}.txt`);
                             fs.writeFileSync(processFilePath, `${serverProcess.pid}`);
 
-                            // Respond with the UUID, PID, engine name, port, and code
+                            // Respond with the UUID, PID, engine name, port, code, and directory path
                             res.status(200).json({
                                 message: 'Server files generated, saved, and executed successfully!',
                                 pid: serverProcess.pid,
                                 uuid: processUUID,
                                 engine_name: MODEL_NAME,
                                 port: port,
-                                code: updatedServerFiles
+                                code: updatedServerFiles,
+                                directory: tempDir
                             });
                         });
                     };
@@ -252,6 +279,9 @@ checkOllamaAndModel().then(() => {
         } else {
             res.status(404).send('Process not found or UUID mismatch');
         }
+
+        // Clear the runningProcesses array
+        runningProcesses.length = 0;
     });
 
     // Define a route to list all running processes
