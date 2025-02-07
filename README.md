@@ -20,14 +20,6 @@ curl -X POST http://localhost:5656/generate-server-files \
 
 This command sends a request to the API generator, which will interpret your description and create a new server instance based on your specifications.
 
-## Why Express.js?
-
-Express.js is a minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile applications. It is the de facto standard server framework for Node.js, known for its simplicity, speed, and scalability. By using Express.js, this API generator leverages:
-
-- **Simplicity and Flexibility**: Express.js offers a straightforward approach to building APIs, making it easy to create and manage routes, middleware, and server logic.
-- **Performance**: Built on Node.js, Express.js is designed for high performance, handling multiple requests efficiently.
-- **Extensibility**: With a vast ecosystem of middleware and plugins, Express.js can be easily extended to meet specific needs.
-- **Community and Support**: As one of the most popular frameworks, Express.js has a large community and extensive documentation, ensuring robust support and resources.
 
 ## Features
 
@@ -74,12 +66,6 @@ Express.js is a minimal and flexible Node.js web application framework that prov
    SERVER_PORT=5656
    ```
 
-3. **Run the Application**:
-   Start the application as usual. The environment variables will be loaded automatically.
-
-   ```bash
-   node index.js
-   ```
 
 ## Usage
 
@@ -87,14 +73,14 @@ Express.js is a minimal and flexible Node.js web application framework that prov
 
 1. **Run the Application**:
    ```bash
-   node index.js
+   npm start
    ```
 
    This will start the main server on port `5656`.
 
 ### Creating a New API Server
 
-To create a new API server, send a POST request to the `/generate-server-files` endpoint with a JSON payload describing the API you want to create.
+To create a new API server, send a POST request to the `/generate-server-files` endpoint with a JSON payload describing the API you want to create in a property called `codeDescription`.
 
 #### Example Request
 
@@ -160,6 +146,7 @@ This command runs the `test.js` script with the `kill` argument, which terminate
 
 - **Ollama Not Running**: Ensure that the Ollama engine is installed and accessible. The application will attempt to start it if it's not running.
 - **Port Conflicts**: The application automatically manages ports, but ensure no other services are using the same range of ports.
+
 
 ## Contributing
 
