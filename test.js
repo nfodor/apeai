@@ -40,7 +40,7 @@ async function testServer() {
       setTimeout(async () => {
         // Test the running server with a longer timeout
         try {
-          const testResponse = await axios.get(`http://localhost:${port}`, { timeout: 10000 }); // 10 seconds timeout
+          const testResponse = await axios.get(`http://localhost:${port}/test`, { timeout: 10000 }); // 10 seconds timeout
           if (testResponse.status === 200) {
             console.log(`Test successful: Received HTTP 200 OK`);
           } else {
@@ -126,7 +126,7 @@ if [ "$port" != "null" ]; then
   echo "Server started successfully on port $port with PID $pid and UUID $uuid."
 
   # Test the running server
-  test_response=$(curl -s "http://localhost:$port/welcome")
+  test_response=$(curl -s "http://localhost:$port")
 
   # Check if the test response is valid
   if [[ $test_response == *"Welcome"* ]]; then

@@ -41,9 +41,9 @@ const MODEL_NAME = process.env.MODEL_NAME || "Qwen2.5-Coder:1.5B";
 const SERVER_PORT = process.env.SERVER_PORT || 5656;
 
 // Define the predefined prompt
-const PREDEFINED_PROMPT = "Ensure the API is secure, but don't use authentication,follows RESTful principles, and includes error handling. ";
+const PREDEFINED_PROMPT = "Ensure the API is secure, but don't use authentication,follows RESTful principles, and includes error handling. Always add a /test endpoint that returns a 200 OK response and does not require authentication.";
 
-// Function to check if Ollama is running by making an HTTP request
+// Function to check if Ollama is running by making an HTTP requests
 async function isOllamaRunning() {
     try {
         const response = await axios.get('http://localhost:11434/');

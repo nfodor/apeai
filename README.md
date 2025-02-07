@@ -2,9 +2,8 @@
 
 ## Overview
 
-Discover APE AI - the revolutionary no-code API server where you describe what you need in plain English, and it spins up custom APIs on demand. Say goodbye to coding and hello to simplicity! #NoCode #APIMagic #APEAI
-
-APE AI is designed as an API-first platform, meaning you can create new API servers and define their specifications directly through the API. This empowers developers and non-developers alike to rapidly prototype and deploy custom APIs without writing a single line of code.
+APE AI is designed as an API-first platform, meaning you can create new API servers and define their specifications directly through the API endpoint it exposes and using natural language. 
+Goal is to empower developers and non-developers alike to rapidly prototype and deploy custom APIs without writing a single line of code.
 
 ## Quick Start Example
 
