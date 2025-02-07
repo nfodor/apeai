@@ -41,7 +41,7 @@ const MODEL_NAME = process.env.MODEL_NAME || "Qwen2.5-Coder:1.5B";
 const SERVER_PORT = process.env.SERVER_PORT || 5656;
 
 // Define the predefined prompt
-const PREDEFINED_PROMPT = "Ensure the API is secure, follows RESTful principles, and includes error handling. ";
+const PREDEFINED_PROMPT = "Ensure the API is secure, but don't use authentication,follows RESTful principles, and includes error handling. ";
 
 // Function to check if Ollama is running by making an HTTP request
 async function isOllamaRunning() {
