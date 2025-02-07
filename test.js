@@ -35,23 +35,27 @@ async function testServer() {
       console.log(`Server started successfully on port ${port} with PID ${pid} and UUID ${uuid}.`);
       console.log(`Server files are located in: ${directory}`);
 
-      // Test the running server
-      try {
-        const testResponse = await axios.get(`http://localhost:${port}`);
-        if (testResponse.status === 200) {
-          console.log(`Test successful: Received HTTP 200 OK`);
-        } else {
-          console.log(`Test failed: Unexpected HTTP response code ${testResponse.status}`);
-          console.log(`Response data: ${JSON.stringify(testResponse.data)}`);
+      // Wait 10 seconds before testing the server
+      console.log('Waiting 10 seconds for the server to start...');
+      setTimeout(async () => {
+        // Test the running server with a longer timeout
+        try {
+          const testResponse = await axios.get(`http://localhost:${port}`, { timeout: 10000 }); // 10 seconds timeout
+          if (testResponse.status === 200) {
+            console.log(`Test successful: Received HTTP 200 OK`);
+          } else {
+            console.log(`Test failed: Unexpected HTTP response code ${testResponse.status}`);
+            console.log(`Response data: ${JSON.stringify(testResponse.data)}`);
+          }
+        } catch (error) {
+          console.error('Error during server test:', error.message);
+          if (error.response) {
+            console.error('Response data:', error.response.data);
+            console.error('Response status:', error.response.status);
+            console.error('Response headers:', error.response.headers);
+          }
         }
-      } catch (error) {
-        console.error('Error during server test:', error.message);
-        if (error.response) {
-          console.error('Response data:', error.response.data);
-          console.error('Response status:', error.response.status);
-          console.error('Response headers:', error.response.headers);
-        }
-      }
+      }, 10000); // 10 seconds delay
 
     } else {
       console.log('Failed to start server. Response:', response.data);
