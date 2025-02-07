@@ -79,7 +79,7 @@ This command sends a request to the API generator, which will interpret your des
 
 ### Creating a New API Server
 
-To create a new API server, send a POST request to the `/generate-server-files` endpoint with a JSON payload describing the API you want to create in a property called `codeDescription`.
+To spin up a new API server, send a POST request to the `/generate-server-files` endpoint with a JSON payload describing the API you want to create in a property called `codeDescription`.
 
 #### Example Request
 
